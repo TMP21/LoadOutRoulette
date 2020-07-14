@@ -40,15 +40,15 @@ public class Trapper extends KillerParameters {
 		addOnList.add(a);
 	}
 	
-	public void deletePerk(String a) {
+	public void deleteAddOn(String a) {
 		addOnList.remove(a);
 	}
 	
-	public void addOnList(String old, String updatet) {
+	public void updateAddOn(String old, String updatet) {
 		addOnList.remove(old);
 		addOnList.add(updatet);
 	}
-
+	
 	private void iniAddOn() {
 		if (ini != 1) {
 			addOnList.add("Trapper Sack");

@@ -48,9 +48,7 @@ public class KillerParameters {
 	public void updatePerk(String old, String updatet) {
 		perkList.remove(old);
 		perkList.add(updatet);
-	}
-	
-	
+	}	
 	
 	private void iniPerk() {
 		if(ini!=1) {
