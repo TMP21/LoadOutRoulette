@@ -37,6 +37,21 @@ public class KillerParameters {
 		return perks;
 	}
 	
+	public void addPerk(String p) {
+		perkList.add(p);
+	}
+	
+	public void deletePerk(String p) {
+		perkList.remove(p);
+	}
+	
+	public void updatePerk(String old, String updatet) {
+		perkList.remove(old);
+		perkList.add(updatet);
+	}
+	
+	
+	
 	private void iniPerk() {
 		if(ini!=1) {
 			perkList.add("A Nurse's Calling");

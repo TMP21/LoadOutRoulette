@@ -35,6 +35,19 @@ public class Trapper extends KillerParameters {
 		return ("Name: " + name + "\n" + "\n1. Add-On: " + useAddOnList[0] + "\n2. Add-On: " + useAddOnList[1] + "\n\n"
 				+ super.ToString());
 	}
+	
+	public void addAddOn(String a) {
+		addOnList.add(a);
+	}
+	
+	public void deletePerk(String a) {
+		addOnList.remove(a);
+	}
+	
+	public void addOnList(String old, String updatet) {
+		addOnList.remove(old);
+		addOnList.add(updatet);
+	}
 
 	private void iniAddOn() {
 		if (ini != 1) {
