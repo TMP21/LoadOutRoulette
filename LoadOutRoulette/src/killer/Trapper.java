@@ -5,6 +5,7 @@ import java.util.LinkedList;
 public class Trapper extends KillerParameters {
 
 	private static int ini = 0;
+	private static String name = "Trapper";
 	private static String[] useAddOnList = new String[2];
 	private LinkedList<Integer> usedInt = new LinkedList<Integer>();
 	private static LinkedList<String> addOnList = new LinkedList<String>();
@@ -31,7 +32,7 @@ public class Trapper extends KillerParameters {
 	}
 
 	public String ToString() {
-		return ("Name: Trapper\n" + "\n1. Add-On: " + useAddOnList[0] + "\n2. Add-On: " + useAddOnList[1] + "\n\n"
+		return ("Name: " + name + "\n" + "\n1. Add-On: " + useAddOnList[0] + "\n2. Add-On: " + useAddOnList[1] + "\n\n"
 				+ super.ToString());
 	}
 
