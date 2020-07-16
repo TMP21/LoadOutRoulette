@@ -2,7 +2,7 @@ package killer;
 
 import java.util.LinkedList;
 
-public class Trapper extends KillerParameters {
+public class Trapper extends Killer {
 
 	private static int ini = 0;
 	private static String name = "Trapper";

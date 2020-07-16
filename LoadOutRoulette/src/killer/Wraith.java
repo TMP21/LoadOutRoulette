@@ -2,7 +2,7 @@ package killer;
 
 import java.util.LinkedList;
 
-public class Wraith extends KillerParameters {
+public class Wraith extends Killer {
 
 	private static int ini = 0;
 	private static String name = "Wraith";

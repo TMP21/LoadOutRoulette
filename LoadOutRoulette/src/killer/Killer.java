@@ -2,14 +2,14 @@ package killer;
 
 import java.util.LinkedList;
 
-public class KillerParameters {
+public class Killer {
 	
 	private static int ini = 0;
 	private String [] usePerkList = new String[4];
 	private LinkedList<Integer> usedInt = new LinkedList<Integer>();
 	private static LinkedList<String> perkList = new LinkedList<String>();
 	
-	protected KillerParameters() {
+	protected Killer() {
 		iniPerk();
 		randomKillerPerks();
 	}
