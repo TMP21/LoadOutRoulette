@@ -8,7 +8,7 @@ public class Wraith extends KillerParameters {
 	private static String name = "Wraith";
 	private static String[] useAddOnList = new String[2];
 	private LinkedList<Integer> usedInt = new LinkedList<Integer>();
-	private static LinkedList<String> addOnList = new LinkedList<String>();
+	public static LinkedList<String> addOnList = new LinkedList<String>();
 
 	public Wraith() {
 		super();
@@ -34,19 +34,6 @@ public class Wraith extends KillerParameters {
 	public String ToString() {
 		return ("Name: " + name +"\n" + "\n1. Add-On: " + useAddOnList[0] + "\n2. Add-On: " + useAddOnList[1] + "\n\n"
 				+ super.ToString());
-	}
-	
-	public void addAddOn(String a) {
-		addOnList.add(a);
-	}
-	
-	public void deleteAddOn(String a) {
-		addOnList.remove(a);
-	}
-	
-	public void updateAddOn(String old, String updatet) {
-		addOnList.remove(old);
-		addOnList.add(updatet);
 	}
 
 	private void iniAddOn() {

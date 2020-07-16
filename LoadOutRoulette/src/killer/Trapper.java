@@ -8,7 +8,7 @@ public class Trapper extends KillerParameters {
 	private static String name = "Trapper";
 	private static String[] useAddOnList = new String[2];
 	private LinkedList<Integer> usedInt = new LinkedList<Integer>();
-	private static LinkedList<String> addOnList = new LinkedList<String>();
+	public static LinkedList<String> addOnList = new LinkedList<String>();
 
 	public Trapper() {
 		super();
@@ -36,17 +36,20 @@ public class Trapper extends KillerParameters {
 				+ super.ToString());
 	}
 	
-	public void addAddOn(String a) {
+	public static void addAddOn(String a) {
 		addOnList.add(a);
+		System.out.println("Add-On: " + a + " has been added!");
 	}
 	
 	public void deleteAddOn(String a) {
 		addOnList.remove(a);
+		System.out.println("Add-On: " + a + " has been removed!");
 	}
 	
 	public void updateAddOn(String old, String updatet) {
 		addOnList.remove(old);
 		addOnList.add(updatet);
+		System.out.println("Add-On: " + old + " has been replaced with: " + updatet + "!");
 	}
 	
 	private void iniAddOn() {
