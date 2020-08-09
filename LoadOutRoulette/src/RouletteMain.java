@@ -1,16 +1,11 @@
-import killer.*;
+import survivor.*;
 
 public class RouletteMain {
 
-	public static void main(String[] args) {
-
+	public static void main(String[] args) throws Exception {
 		for (int i = 0; i < 10; i++) {
-			Trapper t= new Trapper();
-			System.out.println(t.ToString());
-			t = null;
-			Wraith w= new Wraith();
-			System.out.println(w.ToString());
-			t = null;
-		}
+			Survivor s = new Survivor();
+			System.out.println(s.ToString());
+		}		
 	}
 }

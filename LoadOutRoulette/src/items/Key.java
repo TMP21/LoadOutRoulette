@@ -2,7 +2,7 @@ package items;
 
 import java.util.LinkedList;
 
-public class Key extends ItemsParameters{
+public class Key extends Items{
 	
 	private static String name = "Key";
 	private static String[] useAddOnList = new String[2];

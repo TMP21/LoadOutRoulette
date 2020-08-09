@@ -2,7 +2,7 @@ package items;
 
 import java.util.LinkedList;
 
-public class Toolbox extends ItemsParameters{
+public class Toolbox extends Items{
 	
 	private static String name = "Toolbox";
 	private static String[] useAddOnList = new String[2];

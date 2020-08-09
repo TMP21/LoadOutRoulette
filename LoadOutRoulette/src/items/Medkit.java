@@ -2,7 +2,7 @@ package items;
 
 import java.util.LinkedList;
 
-public class Medkit extends ItemsParameters{
+public class Medkit extends Items{
 	
 	private static String name = "Medkit";
 	private static String[] useAddOnList = new String[2];

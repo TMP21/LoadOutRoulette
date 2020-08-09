@@ -2,7 +2,7 @@ package items;
 
 import java.util.LinkedList;
 
-public class Flashlight extends ItemsParameters{
+public class Flashlight extends Items{
 	
 	private static String name = "Flashlight";
 	private static String[] useAddOnList = new String[2];

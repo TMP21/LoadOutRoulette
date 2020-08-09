@@ -1,9 +1,9 @@
 package items;
 
-public class ItemsParameters {
+public class Items {
 
-	public ItemsParameters() {
-		// TODO Auto-generated constructor stub
+	public Items() {
+		
 	}
 
 }

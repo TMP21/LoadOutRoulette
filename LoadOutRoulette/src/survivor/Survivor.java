@@ -1,17 +1,24 @@
 package survivor;
 
 import java.util.LinkedList;
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileWriter;
 
 public class Survivor {
 
 	private static int ini = 0;
+	private File nameFile = new File("C:\\Users\\pierr\\Documents\\Load-Out\\Survivor\\Name.txt");
+	private File perkFile = new File("C:\\Users\\pierr\\Documents\\Load-Out\\Survivor\\Perk.txt");
+	private static String name;
 	private String[] usePerkList = new String[4];
 	private LinkedList<Integer> usedInt = new LinkedList<Integer>();
 	private static LinkedList<String> perkList = new LinkedList<String>();
 	private static LinkedList<String> survList = new LinkedList<String>();
 
-	protected Survivor() {
+	public Survivor() {
 		iniStuff();
+		name = survList.get((int) (Math.random() * survList.size()));
 		randomSurvivorPerks();
 	}
 
@@ -26,16 +33,15 @@ public class Survivor {
 				usedInt.add(j);
 			}
 		}
-
 		return usePerkList;
 	}
 
 	public String ToString() {
-		String perks = "";
+		String Info = "Your Survivor is: " + name;
 		for (int i = 0; i < 4; i++) {
-			perks = perks + (i + 1) + ". Perk = " + usePerkList[i] + "\n";
+			Info = Info + (i + 1) + ". Perk = " + usePerkList[i];
 		}
-		return perks;
+		return Info;
 	}
 
 	public void addPerk(String p) {
@@ -53,118 +59,158 @@ public class Survivor {
 
 	private void iniStuff() {
 		if (ini != 1) {
-			iniPerk();
-			iniSurv();
+			auslesen();
 			ini = 1;
 		}
 	}
-	
-	private void iniSurv() {
-		survList.add("Dwight Fairfield");
-		survList.add("Meg Thomas");
-		survList.add("Claudette Morel");
-		survList.add("Jake Park");
-		survList.add("Nea Karlsson");
-		survList.add("Laurie Strode");
-		survList.add("Ace Visconti");
-		survList.add("William \"Bill\" Overbeck");
-		survList.add("Feng Min");
-		survList.add("David King");
-		survList.add("Quentin Smith");
-		survList.add("David Tapp");
-		survList.add("Kate Denson");
-		survList.add("Adam Francis");
-		survList.add("Jeffrey \"Jeff\" Johansen");
-		survList.add("Jane Romero");
-		survList.add("Ashley \"Ash\" Williams");
-		survList.add("Nancy Wheeler");
-		survList.add("Steve Harrington");
-		survList.add("Yui Kimura");
-		survList.add("Zarina Kassir");
-		survList.add("Cheryl Mason");
+
+	public void speichern() {
+		try (FileWriter fw = new FileWriter(nameFile)) {
+
+			for (int i = 0; i < survList.size(); i++) {
+				fw.write(survList.get(i).toCharArray());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		try (FileWriter fw = new FileWriter(perkFile)) {
+
+			for (int i = 0; i < perkList.size(); i++) {
+				fw.write(perkList.get(i).toCharArray());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
-	private void iniPerk() {
-		perkList.add("Ace in the Hole");
-		perkList.add("Adrenaline");
-		perkList.add("Aftercare");
-		perkList.add("Alert");
-		perkList.add("Any Means Necessary");
-		perkList.add("Autodidact");
-		perkList.add("Babysitter");
-		perkList.add("Balanced Landing");
-		perkList.add("Better Together");
-		perkList.add("Blood Pact");
-		perkList.add("Boil Over");
-		perkList.add("Bond");
-		perkList.add("Borrowed Time");
-		perkList.add("Botany Knowledge");
-		perkList.add("Breakdown");
-		perkList.add("Breakout");
-		perkList.add("Buckle Up");
-		perkList.add("Calm Spirit");
-		perkList.add("Camaraderie");
-		perkList.add("Dance With Me");
-		perkList.add("Dark Sense");
-		perkList.add("Dead Hard");
-		perkList.add("Decisive Strike");
-		perkList.add("Déjà Vu");
-		perkList.add("Deliverance");
-		perkList.add("Detective's Hunch");
-		perkList.add("Distortion");
-		perkList.add("Diversion");
-		perkList.add("Empathy");
-		perkList.add("Fixated");
-		perkList.add("Flip-Flop");
-		perkList.add("For the People");
-		perkList.add("Head On");
-		perkList.add("Hope");
-		perkList.add("Inner Strength");
-		perkList.add("Iron Will");
-		perkList.add("Kindred");
-		perkList.add("Leader");
-		perkList.add("Left Behind");
-		perkList.add("Lightweight");
-		perkList.add("Lithe");
-		perkList.add("Lucky Break");
-		perkList.add("Mettle of Man");
-		perkList.add("No Mither");
-		perkList.add("No One Left Behind");
-		perkList.add("Object of Obsession");
-		perkList.add("Off the Record");
-		perkList.add("Open-Handed");
-		perkList.add("Pharmacy");
-		perkList.add("Plunderer's Instinct");
-		perkList.add("Poised");
-		perkList.add("Premonition");
-		perkList.add("Prove Thyself");
-		perkList.add("Quick & Quiet");
-		perkList.add("Red Herring");
-		perkList.add("Repressed Alliance");
-		perkList.add("Resilience");
-		perkList.add("Saboteur");
-		perkList.add("Second Wind");
-		perkList.add("Self-Care");
-		perkList.add("Slippery Meat");
-		perkList.add("Small Game");
-		perkList.add("Sole Survivor");
-		perkList.add("Solidarity");
-		perkList.add("Soul Guard");
-		perkList.add("Spine Chill");
-		perkList.add("Sprint Burst");
-		perkList.add("Stake Out");
-		perkList.add("Streetwise");
-		perkList.add("This Is Not Happening");
-		perkList.add("Technician");
-		perkList.add("Tenacity");
-		perkList.add("Up the Ante");
-		perkList.add("Unbreakable");
-		perkList.add("Urban Evasion");
-		perkList.add("Vigil");
-		perkList.add("Wake Up!");
-		perkList.add("We'll Make It");
-		perkList.add("We're Gonna Live Forever");
-		perkList.add("Windows of Opportunity");
+	public void auslesen() {		
+		try {
+			Scanner sc = new Scanner(nameFile);
+			while (sc.hasNextLine()) {
+				survList.add(sc.nextLine()+"\n");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			Scanner sc = new Scanner(perkFile);
+			while (sc.hasNextLine()) {
+				perkList.add(sc.nextLine()+"\n");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
+
+//	private void iniSurv() {
+//		survList.add("Dwight Fairfield\n");
+//		survList.add("Meg Thomas\n");
+//		survList.add("Claudette Morel\n");
+//		survList.add("Jake Park\n");
+//		survList.add("Nea Karlsson\n");
+//		survList.add("Laurie Strode\n");
+//		survList.add("Ace Visconti\n");
+//		survList.add("William \"Bill\" Overbeck\n");
+//		survList.add("Feng Min\n");
+//		survList.add("David King\n");
+//		survList.add("Quentin Smith\n");
+//		survList.add("David Tapp\n");
+//		survList.add("Kate Denson\n");
+//		survList.add("Adam Francis\n");
+//		survList.add("Jeffrey \"Jeff\" Johansen\n");
+//		survList.add("Jane Romero\n");
+//		survList.add("Ashley \"Ash\" Williams\n");
+//		survList.add("Nancy Wheeler\n");
+//		survList.add("Steve Harrington\n");
+//		survList.add("Yui Kimura\n");
+//		survList.add("Zarina Kassir\n");
+//		survList.add("Cheryl Mason\n");
+//	}
+//
+//	private void iniPerk() {
+//		perkList.add("Ace in the Hole\n");
+//		perkList.add("Adrenaline\n");
+//		perkList.add("Aftercare\n");
+//		perkList.add("Alert\n");
+//		perkList.add("Any Means Necessary\n");
+//		perkList.add("Autodidact\n");
+//		perkList.add("Babysitter\n");
+//		perkList.add("Balanced Landing\n");
+//		perkList.add("Better Together\n");
+//		perkList.add("Blood Pact\n");
+//		perkList.add("Boil Over\n");
+//		perkList.add("Bond\n");
+//		perkList.add("Borrowed Time\n");
+//		perkList.add("Botany Knowledge\n");
+//		perkList.add("Breakdown\n");
+//		perkList.add("Breakout\n");
+//		perkList.add("Buckle Up\n");
+//		perkList.add("Calm Spirit\n");
+//		perkList.add("Camaraderie\n");
+//		perkList.add("Dance With Me\n");
+//		perkList.add("Dark Sense\n");
+//		perkList.add("Dead Hard\n");
+//		perkList.add("Decisive Strike\n");
+//		perkList.add("Déjà Vu\n");
+//		perkList.add("Deliverance\n");
+//		perkList.add("Detective's Hunch\n");
+//		perkList.add("Distortion\n");
+//		perkList.add("Diversion\n");
+//		perkList.add("Empathy\n");
+//		perkList.add("Fixated\n");
+//		perkList.add("Flip-Flop\n");
+//		perkList.add("For the People\n");
+//		perkList.add("Head On\n");
+//		perkList.add("Hope\n");
+//		perkList.add("Inner Strength\n");
+//		perkList.add("Iron Will\n");
+//		perkList.add("Kindred\n");
+//		perkList.add("Leader\n");
+//		perkList.add("Left Behind\n");
+//		perkList.add("Lightweight\n");
+//		perkList.add("Lithe\n");
+//		perkList.add("Lucky Break\n");
+//		perkList.add("Mettle of Man\n");
+//		perkList.add("No Mither\n");
+//		perkList.add("No One Left Behind\n");
+//		perkList.add("Object of Obsession\n");
+//		perkList.add("Off the Record\n");
+//		perkList.add("Open-Handed\n");
+//		perkList.add("Pharmacy\n");
+//		perkList.add("Plunderer's Instinct\n");
+//		perkList.add("Poised\n");
+//		perkList.add("Premonition\n");
+//		perkList.add("Prove Thyself\n");
+//		perkList.add("Quick & Quiet\n");
+//		perkList.add("Red Herring\n");
+//		perkList.add("Repressed Alliance\n");
+//		perkList.add("Resilience\n");
+//		perkList.add("Saboteur\n");
+//		perkList.add("Second Wind\n");
+//		perkList.add("Self-Care\n");
+//		perkList.add("Slippery Meat\n");
+//		perkList.add("Small Game\n");
+//		perkList.add("Sole Survivor\n");
+//		perkList.add("Solidarity\n");
+//		perkList.add("Soul Guard\n");
+//		perkList.add("Spine Chill\n");
+//		perkList.add("Sprint Burst\n");
+//		perkList.add("Stake Out\n");
+//		perkList.add("Streetwise\n");
+//		perkList.add("This Is Not Happening\n");
+//		perkList.add("Technician\n");
+//		perkList.add("Tenacity\n");
+//		perkList.add("Up the Ante\n");
+//		perkList.add("Unbreakable\n");
+//		perkList.add("Urban Evasion\n");
+//		perkList.add("Vigil\n");
+//		perkList.add("Wake Up!\n");
+//		perkList.add("We'll Make It\n");
+//		perkList.add("We're Gonna Live Forever\n");
+//		perkList.add("Windows of Opportunity\n");
+//	}
 
 }
