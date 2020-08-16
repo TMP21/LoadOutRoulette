@@ -4,20 +4,23 @@ import java.util.LinkedList;
 
 public class Killer {
 	
-	private String killerName;
-	private LinkedList<String> usePerkList = new LinkedList<String>();
-	private LinkedList<String> useAddOnList = new LinkedList<String>();
-	private LinkedList<Integer> usedInt = new LinkedList<Integer>();
+	private static String killerName;
+	private static LinkedList<String> usePerkList = new LinkedList<String>();
+	private static LinkedList<String> useAddOnList = new LinkedList<String>();
+	private static LinkedList<Integer> usedInt = new LinkedList<Integer>();
+	private static LinkedList<Integer> usedIntAddOn = new LinkedList<Integer>();
 	public static LinkedList<String> killerList = new LinkedList<String>();
 	public static LinkedList<String> perkList = new LinkedList<String>();
 	public static LinkedList<String> addOnList = new LinkedList<String>();
 	
 	public Killer() {
-		killerName = killerList.get((int) (Math.random() * killerList.size()));
+//		killerName = killerList.get((int) (Math.random() * killerList.size()));
+		killerName = "Trapper";
+		randomKillerAddOn();
 		randomKillerPerks();
 	}
 	
-	private LinkedList<String> randomKillerPerks() {		
+	private void randomKillerPerks() {		
 		for (int i = 0; i < 4; i++) {
 			int j = (int) (Math.random() * perkList.size());
 			if (usedInt.contains(j)) {
@@ -26,11 +29,22 @@ public class Killer {
 				usePerkList.add(perkList.get(j));
 				usedInt.add(j);
 			}
-		}			
-		return usePerkList;
+		}
 	}
 	
-	public String ToString() {
+	private void randomKillerAddOn() {		
+		for (int i = 0; i < 2; i++) {
+			int j = (int) (Math.random() * addOnList.size());
+			if (usedIntAddOn.contains(j)) {
+				useAddOnList.add("No Add-On");
+			} else {
+				useAddOnList.add(addOnList.get(j));
+				usedIntAddOn.add(j);
+			}
+		}
+	}
+	
+	public String ToString() {			//Bearbeiten!!
 		String perks  = "";
 		for (int i = 0; i < 4; i++) {
 			perks=perks + (i+1) + ". Perk = " + usePerkList.get(i) + "\n"; 
@@ -51,12 +65,16 @@ public class Killer {
 		perkList.add(updatet);
 	}	
 	
-	public String getName() {
+	public static String getName() {
 		return killerName;
 	}
 
-	public String getPerk(int i) {
+	public static String getPerk(int i) {
 		return usePerkList.get(i);
+	}
+	
+	public static String getAddOn(int i) {
+		return useAddOnList.get(i);
 	}
 
 }

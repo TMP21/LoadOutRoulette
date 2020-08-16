@@ -72,6 +72,7 @@ public class Persistant {
 		}
 	}
 	
+	@SuppressWarnings("resource")
 	public static void readOutAddOn(String k) {
 		File addOnFile = new File(".\\Strings\\Killer\\Add-On-" + k + ".txt");
 

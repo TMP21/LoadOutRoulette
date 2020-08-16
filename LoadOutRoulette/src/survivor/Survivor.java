@@ -5,8 +5,8 @@ import java.util.LinkedList;
 public class Survivor {
 
 	private String survivorName;
-	private LinkedList<String> usePerkList = new LinkedList<String>();
-	private LinkedList<Integer> usedInt = new LinkedList<Integer>();
+	private static LinkedList<String> usePerkList = new LinkedList<String>();
+	private static LinkedList<Integer> usedInt = new LinkedList<Integer>();
 	public static LinkedList<String> perkList = new LinkedList<String>();
 	public static LinkedList<String> survList = new LinkedList<String>();
 
@@ -15,7 +15,7 @@ public class Survivor {
 		randomSurvivorPerks();
 	}
 
-	private LinkedList<String> randomSurvivorPerks() {
+	private void randomSurvivorPerks() {
 		for (int i = 0; i < 4; i++) {
 			int j = (int) (Math.random() * perkList.size());
 			if (usedInt.contains(j)) {
@@ -25,7 +25,6 @@ public class Survivor {
 				usedInt.add(j);
 			}
 		}
-		return usePerkList;
 	}
 
 	public String ToString() {
