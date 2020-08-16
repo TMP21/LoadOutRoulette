@@ -1,5 +1,6 @@
 package survivor;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Scanner;
 import java.io.File;
@@ -8,8 +9,8 @@ import java.io.FileWriter;
 public class Survivor {
 
 	private static int ini = 0;
-	private File nameFile = new File("C:\\Users\\pierr\\Documents\\Load-Out\\Survivor\\Name.txt");
-	private File perkFile = new File("C:\\Users\\pierr\\Documents\\Load-Out\\Survivor\\Perk.txt");
+	private File nameFile = new File(".\\Strings\\Survivor\\Name.txt");
+	private File perkFile = new File(".\\Strings\\Survivor\\Perk.txt");
 	private static String name;
 	private String[] usePerkList = new String[4];
 	private LinkedList<Integer> usedInt = new LinkedList<Integer>();
@@ -27,7 +28,7 @@ public class Survivor {
 		for (int i = 0; i < 4; i++) {
 			int j = (int) (Math.random() * perkList.size());
 			if (usedInt.contains(j)) {
-				usePerkList[i] = "No Perk";
+				usePerkList[i] = "No Perk\n";
 			} else {
 				usePerkList[i] = perkList.get(j);
 				usedInt.add(j);
@@ -47,6 +48,14 @@ public class Survivor {
 	public void addPerk(String p) {
 		perkList.add(p);
 	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public String getPerk(int i) {
+		return usePerkList[i];
+	}
 
 	public void deletePerk(String p) {
 		perkList.remove(p);
@@ -59,36 +68,37 @@ public class Survivor {
 
 	private void iniStuff() {
 		if (ini != 1) {
-			auslesen();
+			readOut();
 			ini = 1;
 		}
 	}
 
-	public void speichern() {
+	public void safe() {
 		try (FileWriter fw = new FileWriter(nameFile)) {
-
+			Collections.sort(survList);
 			for (int i = 0; i < survList.size(); i++) {
-				fw.write(survList.get(i).toCharArray());
+				fw.write((survList.get(i)+"\n").toCharArray());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		try (FileWriter fw = new FileWriter(perkFile)) {
-
+			Collections.sort(perkList);
 			for (int i = 0; i < perkList.size(); i++) {
-				fw.write(perkList.get(i).toCharArray());
+				fw.write((perkList.get(i)+"\n").toCharArray());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void auslesen() {		
+	@SuppressWarnings("resource")
+	public void readOut() {		
 		try {
 			Scanner sc = new Scanner(nameFile);
 			while (sc.hasNextLine()) {
-				survList.add(sc.nextLine()+"\n");
+				survList.add(sc.nextLine());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -97,7 +107,7 @@ public class Survivor {
 		try {
 			Scanner sc = new Scanner(perkFile);
 			while (sc.hasNextLine()) {
-				perkList.add(sc.nextLine()+"\n");
+				perkList.add(sc.nextLine());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
