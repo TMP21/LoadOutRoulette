@@ -202,7 +202,7 @@ public class GUI extends Application {
 			Label addOnName = new Label(killer.getAddOn(i));
 			addOnName.setFont(new Font(fontName, fontSize));
 			Image addOnIcon = new Image(new FileInputStream(
-					".\\Icons\\Icons\\Killer\\Add-On\\" + killer.getName() + "\\" + (killer.getAddOn(i).replace("\"", "")) + ".png"));
+					".\\Icons\\Icons\\Killer\\Add-On\\" + (killer.getAddOn(i).replace("\"", "")) + ".png"));
 			ImageView addOnView = new ImageView(addOnIcon);
 
 			addOnView.setFitHeight(addOnSize);

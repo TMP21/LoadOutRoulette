@@ -46,7 +46,7 @@ public class Killer {
 		}
 	}
 
-	public String ToString() { // Bearbeiten!!
+	public String ToString() { 
 		String perks = "";
 		for (int i = 0; i < 4; i++) {
 			perks = perks + (i + 1) + ". Perk = " + usePerkList.get(i) + "\n";
