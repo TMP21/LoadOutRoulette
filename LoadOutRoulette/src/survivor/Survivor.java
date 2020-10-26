@@ -7,8 +7,8 @@ public class Survivor {
 	private String survivorName;
 	private static LinkedList<String> usePerkList = new LinkedList<String>();
 	private static LinkedList<Integer> usedInt = new LinkedList<Integer>();
-	public static LinkedList<String> perkList = new LinkedList<String>();
-	public static LinkedList<String> survList = new LinkedList<String>();
+	private static LinkedList<String> perkList = new LinkedList<String>();
+	private static LinkedList<String> survList = new LinkedList<String>();
 
 	public Survivor() {
 		survivorName = survList.get((int) (Math.random() * survList.size()));
@@ -35,17 +35,30 @@ public class Survivor {
 		return Info;
 	}
 
-	public void addPerk(String p) {
+	public static void addPerk(String p) {
 		perkList.add(p);
 	}
 
-	public void deletePerk(String p) {
+	public static void deletePerk(String p) {
 		perkList.remove(p);
 	}
 
-	public void updatePerk(String old, String updatet) {
+	public static void updatePerk(String old, String updatet) {
 		perkList.remove(old);
 		perkList.add(updatet);
+	}
+	
+	public static void addName(String n) {
+		survList.add(n);
+	}
+
+	public static void deleteName(String n) {
+		survList.remove(n);
+	}
+
+	public static void updateName(String old, String updatet) {
+		survList.remove(old);
+		survList.add(updatet);
 	}
 	
 	public String getName() {

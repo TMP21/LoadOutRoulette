@@ -12,7 +12,6 @@ public class Persistant {
 	public Persistant() {
 		readOut("Survivor");
 		readOut("Killer");
-		readOutAddOn("Trapper");
 	}
 
 	public static void save(LinkedList<String> nameList, LinkedList<String> perkList, String c) {
@@ -48,12 +47,12 @@ public class Persistant {
 			if (c.equals("Survivor")) {
 				Scanner nsc = new Scanner(nameFile);
 				while (nsc.hasNextLine()) {
-					Survivor.survList.add(nsc.nextLine());
+					Survivor.addName(nsc.nextLine());
 				}
 				
 				Scanner psc = new Scanner(perkFile);
 				while (psc.hasNextLine()) {
-					Survivor.perkList.add(psc.nextLine());
+					Survivor.addPerk(psc.nextLine());
 				}
 				
 			} else {
@@ -75,7 +74,7 @@ public class Persistant {
 	@SuppressWarnings("resource")
 	public static void readOutAddOn(String k) {
 		File addOnFile = new File(".\\Strings\\Killer\\Add-On-" + k + ".txt");
-
+		Killer.addOnList.clear();
 		try {
 				Scanner sc = new Scanner(addOnFile);
 				while (sc.hasNextLine()) {
